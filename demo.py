@@ -174,7 +174,7 @@ def demo_reload_and_verify(verifier: CertificateVerifier) -> None:
         result = verifier.verify(cert)
         print(f"  Verificación: {result}")
     
-    # Resumen de archivos generados
+ 
     print("\n[Archivos generados]")
     for filepath in sorted(certs_dir.glob("*.json")):
         size = filepath.stat().st_size
@@ -184,10 +184,8 @@ def main():
 
     print("\n" + "=" * 60)
     print(" PKI POST-CUÁNTICA CON ML-DSA-65 (FIPS 204)")
-    print(" Proyecto de Criptografía - Universidad del Norte")
     print("=" * 60)
     
-    # Ejecutar demo
     ca, verifier = demo_setup()
     entities = demo_issue_certificates(ca)
     demo_valid_verification(verifier, entities)

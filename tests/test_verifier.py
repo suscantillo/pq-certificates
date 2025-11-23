@@ -1,7 +1,3 @@
-"""
-Tests de verificación de certificados ML-DSA-65.
-Cubre casos válidos e inválidos requeridos por el proyecto.
-"""
 
 import pytest
 from datetime import datetime, timezone, timedelta
