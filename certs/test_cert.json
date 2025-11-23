@@ -1,0 +1,21 @@
+{
+  "version": "v3",
+  "serialNumber": 1,
+  "signature": {
+    "algorithm": "ML-DSA-65"
+  },
+  "issuer": {
+    "commonName": "Root CA"
+  },
+  "validity": {
+    "notBefore": "2025-11-23T16:19:49Z",
+    "notAfter": "2026-11-23T16:19:49Z"
+  },
+  "subject": {
+    "commonName": "Alice"
+  },
+  "subjectPublicKeyInfo": {
+    "algorithm": "ML-DSA-65",
+    "publicKey": "746573745f6b6579"
+  }
+}
