@@ -16,8 +16,6 @@ class CertificateAuthority:
         """
         self.common_name = common_name
         self.validity_years = validity_years
-        
-        # Estado interno (se inicializa con initialize())
         self._public_key: Optional[bytes] = None
         self._secret_key: Optional[bytes] = None
         self._root_certificate: Optional[Certificate] = None
@@ -68,23 +66,11 @@ class CertificateAuthority:
         subject_public_key: bytes,
         validity_days: int
     ) -> Certificate:
-        """
-        Crea y firma un certificado.
-        
-        Args:
-            subject_cn: Common Name del sujeto
-            subject_public_key: Clave pública del sujeto
-            validity_days: Días de validez
-            
-        Returns:
-            Certificate: Certificado firmado
-        """
         if self._secret_key is None:
             raise RuntimeError("CA no tiene clave secreta.")
         
         now = datetime.now(timezone.utc)
         
-        # Construir certificado sin firma
         certificate = Certificate(
             version="v3",
             serial_number=self._next_serial(),
@@ -101,11 +87,9 @@ class CertificateAuthority:
             )
         )
         
-        # Canonicalizar TBS y firmar
         tbs_bytes = serializer.canonicalize_tbs(certificate)
         signature = mldsa.sign(self._secret_key, tbs_bytes)
         
-        # Adjuntar firma
         certificate.signature_value = signature
         
         return certificate
