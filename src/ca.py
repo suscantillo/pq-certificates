@@ -100,21 +100,7 @@ class CertificateAuthority:
         subject_cn: str,
         validity_days: int = 365
     ) -> Certificate:
-        """
-        Emite un certificado para una entidad final.
-        
-        Args:
-            subject_public_key: Clave pública de la entidad
-            subject_cn: Common Name de la entidad (ej: "Alice")
-            validity_days: Días de validez (default 365)
-            
-        Returns:
-            Certificate: Certificado de entidad final firmado por la CA
-            
-        Raises:
-            RuntimeError: Si la CA no está inicializada
-            ValueError: Si la clave pública tiene tamaño incorrecto
-        """
+
         if not self.is_initialized:
             raise RuntimeError("CA no inicializada. Llama a initialize() primero.")
         
